@@ -19,7 +19,10 @@
 
 # Overview
 
-This Puppet module is designed to facilitate the installation and configuration of [MIT Kerberos](http://web.mit.edu/kerberos/).  The primary scope includes installing the user utilities (kinit, etc) on the system and populating krb5.conf with the appropriate sections.
+This Puppet module is designed to facilitate the installation and configuration
+of [MIT Kerberos](http://web.mit.edu/kerberos/).  The primary scope includes
+installing the user utilities (kinit, etc) on the system and populating
+krb5.conf with the appropriate sections.
 
 Other tasks such as setting up KDC services are **not covered**.
 
@@ -93,18 +96,20 @@ mit_krb5::realm { 'EXAMPLE.COM':
   kdc          => 'kerberos.example.com',
   admin_server => 'kerberos.example.com'
 }
-mit_krb5::domain_realm { 'INSECURE.LOCAL':
+mit_krb5::domain_realm { 'EXAMPLE.COM':
   domains => ['.example.com', 'example.com']
 }
 ```
 
 # Classes and Resources
 
-The module was structured into resources/classes that resemble the sections of krb5.conf.
+The module was structured into resources/classes that resemble the sections of
+krb5.conf.
 
 ## mit\_krb5
 
-Top-level class that installs MIT Kerberos and controls krb5.conf file.  Class parameters are used to define contents of \[libdefaults\] section.
+Top-level class that installs MIT Kerberos and controls krb5.conf file.  Class
+parameters are used to define contents of \[libdefaults\] section.
 
 ### Parameters from libdefaults section
 
