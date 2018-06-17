@@ -112,6 +112,7 @@ Top-level class that installs MIT Kerberos and controls krb5.conf file.  Class p
 - `default_keytab_name`
 - `default_tgs_enctypes`
 - `default_tkt_enctypes`
+- `default_ccache_name`
 - `permitted_enctypes`
 - `allow_weak_crypto`
 - `clockskew`
@@ -177,6 +178,7 @@ Realm name is specified by resource title
 - `v4_realm`
 - `auth_to_local_names`
 - `auth_to_local`
+- `pkinit_anchors`
 
 ## mit\_krb5::logging
 
