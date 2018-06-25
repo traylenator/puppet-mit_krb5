@@ -22,9 +22,6 @@
 # [*default_tkt_enctypes*]
 #   This relation identifies the supported list of session key encryption types
 #   that should be requested by the client. (Required type: array)
-
-# [*default_ccache_name*]
-#   This relation allows you to set a default credential cache name
 #
 # [*default_ccache_name*]
 #   This relation allows you to set a default credential cache name
