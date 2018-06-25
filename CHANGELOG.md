@@ -1,3 +1,15 @@
+#### 2018-06-25 - Remi Ferrand <puppet@cc.in2p3.fr> - 0.4.1
+
+* Migrate to PDK version `1.6.0`
+* Introduce new dependency on `ccin2p3-etc_services`
+
+##### Fixes
+* Fixes `metadata.json` (See [#10](https://github.com/ccin2p3/puppet-mit_krb5/pull/10))
+
+##### New features
+* Add support for options `default_ccache_name` and `pkinit_anchors` (See [#11](https://github.com/ccin2p3/puppet-mit_krb5/pull/11))
+* Add support for option ̀`canonicalize` (See [#7](https://github.com/ccin2p3/puppet-mit_krb5/pull/7))
+
 #### 2016-03-31 - Fabien Wernli <puppet@cc.in2p3.fr> - 0.2.1
 
 * add compatibility with concat 2.x
