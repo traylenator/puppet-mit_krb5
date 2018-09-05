@@ -102,7 +102,7 @@ define mit_krb5::dbmodules(
   ensure_resource('concat::fragment', 'mit_krb5::dbmodules_header', {
     target  => $mit_krb5::krb5_conf_path,
     order   => '30dbmodules_header',
-    content => "[dbmodules]\n",
+    content => "\n[dbmodules]\n",
   })
   if (! empty($mit_krb5::db_module_dir)) {
     ensure_resource('concat::fragment', 'mit_krb5::dbmodules_db_module_dir', {
