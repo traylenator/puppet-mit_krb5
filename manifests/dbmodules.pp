@@ -82,6 +82,7 @@
 #
 # Copyright 2013 Patrick Mooney.
 # Copyright 2016 Modestas Vainius.
+# Copyright (c) IN2P3 Computing Centre, IN2P3, CNRS
 #
 define mit_krb5::dbmodules(
   $realm                      = $title,
