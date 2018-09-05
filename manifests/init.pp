@@ -265,7 +265,8 @@ class mit_krb5(
   String $krb5_conf_owner           = 'root',
   String $krb5_conf_group           = 'root',
   String $krb5_conf_mode            = '0444',
-  Boolean $alter_etc_services       = false
+  Boolean $alter_etc_services       = false,
+  Boolean $krb5_conf_warn           = true
 ) {
   # SECTION: Parameter validation {
   # Boolean-type parameters are not type-validated at this time.
@@ -293,6 +294,7 @@ class mit_krb5(
     owner => $krb5_conf_owner,
     group => $krb5_conf_group,
     mode  => $krb5_conf_mode,
+    warn  => $krb5_conf_warn
   }
   concat::fragment { 'mit_krb5::header':
     target  => $krb5_conf_path,
