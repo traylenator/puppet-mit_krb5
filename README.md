@@ -12,6 +12,7 @@
     - [mit\_krb5::logging](#mit_krb5logging)
     - [mit\_krb5::domain\_realm](#mit_krb5domain_realm)
     - [mit\_krb5::appdefaults](#mit_krb5appdefaults)
+    - [mit\_krb5::dbmodules](#mit_krb5dbmodules)
 5. [Limitations](#limitations)
 6. [License](#license)
 7. [Development](#development)
@@ -109,7 +110,14 @@ krb5.conf.
 ## mit\_krb5
 
 Top-level class that installs MIT Kerberos and controls krb5.conf file.  Class
-parameters are used to define contents of \[libdefaults\] section.
+parameters are used to define top-level directives and  contents of
+\[libdefaults\] section.
+
+### Top-level directives
+
+- include - (arrays allowed)
+- includedir - (arrays allowed)
+- module - (arrays allowed)
 
 ### Parameters from libdefaults section
 
@@ -176,6 +184,8 @@ Realm name is specified by resource title
 ### Parameters from realm section
 
 - `kdc` - (arrays allowed)
+- `kpasswd_server`
+- `master_kdc`
 - `admin_server` - (arrays allowed)
 - `database_module`
 - `default_domain`
@@ -255,6 +265,28 @@ could be obtained with
 }
 ```
 
+## mit\_krb5::dbmodules
+
+Class to configure \[dbmodules\] section
+
+### Parameters from dbmodules section
+
+- db\_module\_dir
+
+Per realm:
+
+- database\_name
+- db\_library
+- disable\_last\_success
+- disable\_lockout
+- ldap\_cert\_path
+- ldap\_conns\_per\_server
+- ldap\_kadmind\_dn
+- ldap\_kdc\_dn
+- ldap\_kerberos\_container\_dn
+- ldap\_servers (arrays allowed)
+- ldap\_service\_password\_file
+
 # Limitations
 
 Configuration sections other than those listed above are not yet supported.
@@ -262,7 +294,6 @@ This includes:
 
 - `capaths`
 - `dbdefaults`
-- `dbmodules`
 - `login`
 - `plugins`
 

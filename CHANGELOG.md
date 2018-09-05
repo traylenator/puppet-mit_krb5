@@ -1,3 +1,15 @@
+#### 2018-09-05 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.0.0
+
+##### New features
+* Add support for `dbmodules` section (See [#14](https://github.com/ccin2p3/puppet-mit_krb5/pull/14))
+* Add support for `include`, `includedir` and `module` parameters in `libdefaults` section (See [#15](https://github.com/ccin2p3/puppet-mit_krb5/pull/15))
+* Add support for `master_kdc` in `realm` section (See [#16](https://github.com/ccin2p3/puppet-mit_krb5/pull/16))
+
+##### Breaking changes
+* Use Puppet v4 native data types
+* Upgrade minimum `puppetlabs-stdlib` required version to `4.13.0`
+* Upgrade minimum `puppetlabs-concat` required version to `1.1.0`
+
 #### 2018-06-25 - Remi Ferrand <puppet@cc.in2p3.fr> - 0.4.1
 
 * Migrate to PDK version `1.6.0`

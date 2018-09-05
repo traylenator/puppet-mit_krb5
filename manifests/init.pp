@@ -175,6 +175,28 @@
 #   default value is the "krb5/plugins" subdirectory of the krb5 library
 #   directory.
 #
+# [*include*]
+#   The named file should be an absolute path, must exist and must be readable.
+#   Included profile files are syntactically independent of their parents, so
+#   each included file must begin with a section header.
+#
+# [*includedir*]
+#   The named directory should be an absolute path, must exist and must be
+#   readable.  Including a directory includes all files within the directory
+#   whose names consist solely of alphanumeric characters, dashes, or
+#   underscores. Included profile files are syntactically independent of their
+#   parents, so each included file must begin with a section header.
+#
+# [*module*]
+#   *MODULEPATH:RESIDUAL*
+#   MODULEPATH may be relative to the library path of the krb5 installation, or
+#   it may be an absolute path. RESIDUAL is provided to the module at
+#   initialization time. If krb5.conf uses a module directive, kdc.conf should
+#   also use one if it exists.
+# [*db_module_dir*]
+#   This tag controls where the plugin system looks for database modules. The
+#   value should be an absolute path.
+#
 # [*krb5_conf_path*]
 #   Path to krb5.conf file.  (Default: /etc/krb5.conf)
 #
@@ -203,67 +225,50 @@
 # Copyright (c) IN2P3 Computing Centre, IN2P3, CNRS
 #
 class mit_krb5(
-  $default_realm            = '',
-  $default_keytab_name      = '',
-  $default_tgs_enctypes     = [],
-  $default_tkt_enctypes     = [],
-  $default_ccache_name      = '',
-  $permitted_enctypes       = [],
-  $allow_weak_crypto        = '',
-  $clockskew                = '',
-  $ignore_acceptor_hostname = '',
-  $k5login_authoritative    = '',
-  $k5login_directory        = '',
-  $kdc_timesync             = '',
-  $kdc_req_checksum_type    = '',
-  $ap_req_checksum_type     = '',
-  $safe_checksum_type       = '',
-  $preferred_preauth_types  = '',
-  $ccache_type              = '',
-  $canonicalize             = '',
-  $dns_lookup_kdc           = '',
-  $dns_lookup_realm         = '',
-  $dns_fallback             = '',
-  $realm_try_domains        = '',
-  $extra_addresses          = [],
-  $udp_preference_limit     = '',
-  $verify_ap_req_nofail     = '',
-  $ticket_lifetime          = '',
-  $renew_lifetime           = '',
-  $noaddresses              = '',
-  $forwardable              = '',
-  $proxiable                = '',
-  $rdns                     = '',
-  $plugin_base_dir          = '',
-  $krb5_conf_path           = '/etc/krb5.conf',
-  $krb5_conf_owner          = 'root',
-  $krb5_conf_group          = 'root',
-  $krb5_conf_mode           = '0444',
-  $alter_etc_services       = false
+  String $default_realm             = '',
+  String $default_keytab_name       = '',
+  $default_tgs_enctypes             = [],
+  $default_tkt_enctypes             = [],
+  String $default_ccache_name       = '',
+  $permitted_enctypes               = [],
+  $allow_weak_crypto                = '',
+  String $clockskew                 = '',
+  $ignore_acceptor_hostname         = '',
+  $k5login_authoritative            = '',
+  String $k5login_directory         = '',
+  String $kdc_timesync              = '',
+  String $kdc_req_checksum_type     = '',
+  String $ap_req_checksum_type      = '',
+  String $safe_checksum_type        = '',
+  String $preferred_preauth_types   = '',
+  String $ccache_type               = '',
+  $canonicalize                     = '',
+  $dns_lookup_kdc                   = '',
+  $dns_lookup_realm                 = '',
+  $dns_fallback                     = '',
+  String $realm_try_domains         = '',
+  $extra_addresses                  = [],
+  String $udp_preference_limit      = '',
+  $verify_ap_req_nofail             = '',
+  String $ticket_lifetime           = '',
+  String $renew_lifetime            = '',
+  $noaddresses                      = '',
+  $forwardable                      = '',
+  $proxiable                        = '',
+  $rdns                             = '',
+  String $plugin_base_dir           = '',
+  $include                          = '',
+  $includedir                       = '',
+  $module                           = '',
+  String $db_module_dir             = '',
+  String $krb5_conf_path            = '/etc/krb5.conf',
+  String $krb5_conf_owner           = 'root',
+  String $krb5_conf_group           = 'root',
+  String $krb5_conf_mode            = '0444',
+  Boolean $alter_etc_services       = false,
+  Boolean $krb5_conf_warn           = true
 ) {
   # SECTION: Parameter validation {
-  validate_string(
-    $default_realm,
-    $default_ccache_name,
-    $default_keytab_name,
-    $clockskew,
-    $k5login_directory,
-    $kdc_timesync,
-    $kdc_req_checksum_type,
-    $ap_req_checksum_type,
-    $safe_checksum_type,
-    $preferred_preauth_types,
-    $ccache_type,
-    $realm_try_domains,
-    $udp_preference_limit,
-    $ticket_lifetime,
-    $renew_lifetime,
-    $plugin_base_dir,
-    $krb5_conf_path,
-    $krb5_conf_owner,
-    $krb5_conf_group,
-    $krb5_conf_mode
-  )
   # Boolean-type parameters are not type-validated at this time.
   # This allows true/false/'yes'/'no'/'1'/0' to be used.
   #
@@ -289,6 +294,12 @@ class mit_krb5(
     owner => $krb5_conf_owner,
     group => $krb5_conf_group,
     mode  => $krb5_conf_mode,
+    warn  => $krb5_conf_warn
+  }
+  concat::fragment { 'mit_krb5::header':
+    target  => $krb5_conf_path,
+    order   => '00header',
+    content => template('mit_krb5/header.erb'),
   }
   concat::fragment { 'mit_krb5::libdefaults':
     target  => $krb5_conf_path,
