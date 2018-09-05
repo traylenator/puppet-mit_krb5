@@ -193,6 +193,9 @@
 #   it may be an absolute path. RESIDUAL is provided to the module at
 #   initialization time. If krb5.conf uses a module directive, kdc.conf should
 #   also use one if it exists.
+# [*db_module_dir*]
+#   This tag controls where the plugin system looks for database modules. The
+#   value should be an absolute path.
 #
 # [*krb5_conf_path*]
 #   Path to krb5.conf file.  (Default: /etc/krb5.conf)
@@ -257,6 +260,7 @@ class mit_krb5(
   $include                  = '',
   $includedir               = '',
   $module                   = '',
+  $db_module_dir            = '',
   $krb5_conf_path           = '/etc/krb5.conf',
   $krb5_conf_owner          = 'root',
   $krb5_conf_group          = 'root',
@@ -281,6 +285,7 @@ class mit_krb5(
     $ticket_lifetime,
     $renew_lifetime,
     $plugin_base_dir,
+    $db_module_dir,
     $krb5_conf_path,
     $krb5_conf_owner,
     $krb5_conf_group,
