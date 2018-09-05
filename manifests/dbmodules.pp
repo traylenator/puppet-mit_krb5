@@ -85,7 +85,7 @@
 # Copyright (c) IN2P3 Computing Centre, IN2P3, CNRS
 #
 define mit_krb5::dbmodules(
-  $realm                      = $title,
+  String $realm               = $title,
   $database_name              = '',
   $db_library                 = '',
   $disable_last_success       = '',
@@ -99,7 +99,6 @@ define mit_krb5::dbmodules(
   $ldap_service_password_file = '',
 ) {
   include mit_krb5
-  validate_string($realm)
   ensure_resource('concat::fragment', 'mit_krb5::dbmodules_header', {
     target  => $mit_krb5::krb5_conf_path,
     order   => '30dbmodules_header',
