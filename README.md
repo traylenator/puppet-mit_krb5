@@ -195,6 +195,7 @@ Realm name is specified by resource title
 - `auth_to_local_names`
 - `auth_to_local`
 - `pkinit_anchors`
+- `pkinit_pool`
 
 ## mit\_krb5::logging
 
