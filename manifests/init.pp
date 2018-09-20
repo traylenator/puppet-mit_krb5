@@ -273,7 +273,12 @@ class mit_krb5(
   String $krb5_conf_group           = 'root',
   String $krb5_conf_mode            = '0444',
   Boolean $alter_etc_services       = false,
-  Boolean $krb5_conf_warn           = true
+  Boolean $krb5_conf_warn           = true,
+  Hash $domain_realms               = {},
+  Hash $capaths                     = {},
+  Hash $appdefaults                 = {},
+  Hash $realms                      = {},
+  Hash $dbmodules                   = {}
 ) {
   # SECTION: Parameter validation {
   # Boolean-type parameters are not type-validated at this time.
@@ -313,6 +318,14 @@ class mit_krb5(
     order   => '01libdefaults',
     content => template('mit_krb5/libdefaults.erb'),
   }
+
+  # Create dynamic resources
+  create_resources('mit_krb5::domain_realm', $domain_realms)
+  create_resources('mit_krb5::capaths', $capaths)
+  create_resources('mit_krb5::appdefaults', $appdefaults)
+  create_resources('mit_krb5::realm', $realms)
+  create_resources('mit_krb5::dbmodules', $dbmodules)
+
   anchor { 'mit_krb5::end': }
   # END Resource creation }
 
