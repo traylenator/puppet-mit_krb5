@@ -104,6 +104,12 @@
 #   different client principals than the requested principal will be accepted.
 #   The default value is false.
 #
+# [*dns_canonicalize_hostname*]
+#   Indicate whether name lookups will be used to canonicalize hostnames for use 
+#   in service principal names. Setting this flag to false can improve security 
+#   by reducing reliance on DNS, but means that short hostnames will not be 
+#   canonicalized to fully-qualified hostnames. The default value is true.
+#
 # [*ccache_type*]
 #   User this parameter on systems which are DCE clients, to specify the type
 #   of cache to be created by kinit, or hen forwarded tickets are received. DCE
@@ -243,6 +249,7 @@ class mit_krb5(
   String $preferred_preauth_types   = '',
   String $ccache_type               = '',
   $canonicalize                     = '',
+  $dns_canonicalize_hostname        = '',
   $dns_lookup_kdc                   = '',
   $dns_lookup_realm                 = '',
   $dns_fallback                     = '',

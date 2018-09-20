@@ -139,6 +139,7 @@ parameters are used to define top-level directives and  contents of
 - `preferred_preauth_types`
 - `ccache_type`
 - `canonicalize` (mit_krb5 1.11+ - RHEL6/wheezy only have 1.10)
+- `dns_canonicalize_hostname`
 - `dns_lookup_kdc`
 - `dns_lookup_realm`
 - `dns_fallback`
