@@ -104,6 +104,12 @@
 #   different client principals than the requested principal will be accepted.
 #   The default value is false.
 #
+# [*dns_canonicalize_hostname*]
+#   Indicate whether name lookups will be used to canonicalize hostnames for use 
+#   in service principal names. Setting this flag to false can improve security 
+#   by reducing reliance on DNS, but means that short hostnames will not be 
+#   canonicalized to fully-qualified hostnames. The default value is true.
+#
 # [*ccache_type*]
 #   User this parameter on systems which are DCE clients, to specify the type
 #   of cache to be created by kinit, or hen forwarded tickets are received. DCE
@@ -243,6 +249,7 @@ class mit_krb5(
   String $preferred_preauth_types   = '',
   String $ccache_type               = '',
   $canonicalize                     = '',
+  $dns_canonicalize_hostname        = '',
   $dns_lookup_kdc                   = '',
   $dns_lookup_realm                 = '',
   $dns_fallback                     = '',
@@ -266,7 +273,12 @@ class mit_krb5(
   String $krb5_conf_group           = 'root',
   String $krb5_conf_mode            = '0444',
   Boolean $alter_etc_services       = false,
-  Boolean $krb5_conf_warn           = true
+  Boolean $krb5_conf_warn           = true,
+  Hash $domain_realms               = {},
+  Hash $capaths                     = {},
+  Hash $appdefaults                 = {},
+  Hash $realms                      = {},
+  Hash $dbmodules                   = {}
 ) {
   # SECTION: Parameter validation {
   # Boolean-type parameters are not type-validated at this time.
@@ -306,6 +318,14 @@ class mit_krb5(
     order   => '01libdefaults',
     content => template('mit_krb5/libdefaults.erb'),
   }
+
+  # Create dynamic resources
+  create_resources('mit_krb5::domain_realm', $domain_realms)
+  create_resources('mit_krb5::capaths', $capaths)
+  create_resources('mit_krb5::appdefaults', $appdefaults)
+  create_resources('mit_krb5::realm', $realms)
+  create_resources('mit_krb5::dbmodules', $dbmodules)
+
   anchor { 'mit_krb5::end': }
   # END Resource creation }
 

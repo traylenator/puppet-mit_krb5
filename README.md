@@ -36,6 +36,10 @@ Other tasks such as setting up KDC services are **not covered**.
 
 # Examples
 
+## Simple example
+
+### Full puppet code
+
 ```puppet
 class { 'mit_krb5':
   default_realm      => 'INSECURE.LOCAL',
@@ -77,7 +81,46 @@ Yields the following krb5.conf:
     .insecure.local = INSECURE.LOCAL
 ```
 
-Code such as this would mimic the example file shipped with CentOS/RHEL:
+### Hiera integration
+
+The previous example can also be written as follows:
+
+```puppet
+include mit_krb5
+include mit_krb5::logging
+```
+
+with the following _Hiera_ data:
+
+```yaml
+---
+mit_krb5::default_realm: 'INSECURE.LOCAL'
+mit_krb5::allow_weak_crypto: true
+
+mit_krb5::permitted_enctypes:
+  - 'des-cbc-crc'
+  - 'des-cbc-md5'
+
+mit_krb5::logging::default:
+  - 'FILE:/var/log/krb5libs.log'
+  - 'SYSLOG'
+
+mit_krb5::realms:
+  'INSECURE.LOCAL':
+    kdc:
+      - 'kdc1.insecure.local'
+      - 'kdc2.insecure.local'
+    admin_server: 'kpasswd.insecure.local'
+
+mit_krb5::domain_realms:
+  'INSECURE.LOCAL':
+    domains:
+      - 'insecure.local'
+      - '.insecure.local'
+```
+
+## Mimic the example file shipped with CentOS/RHEL
+
 ```puppet
 class { 'mit_krb5::install': }
 class { 'mit_krb5':
@@ -139,6 +182,7 @@ parameters are used to define top-level directives and  contents of
 - `preferred_preauth_types`
 - `ccache_type`
 - `canonicalize` (mit_krb5 1.11+ - RHEL6/wheezy only have 1.10)
+- `dns_canonicalize_hostname`
 - `dns_lookup_kdc`
 - `dns_lookup_realm`
 - `dns_fallback`
@@ -195,6 +239,7 @@ Realm name is specified by resource title
 - `auth_to_local_names`
 - `auth_to_local`
 - `pkinit_anchors`
+- `pkinit_pool`
 
 ## mit\_krb5::logging
 

@@ -84,6 +84,10 @@
 # [*pkinit_anchors*]
 #   This relation allows you set the path of a certificate authority file.
 #
+# [*pkinit_pool*]
+#   Specifies the location of intermediate certificates which may be used by the
+#   client to complete the trust chain between a KDC certificate and a trusted anchor. 
+#
 # === Examples
 #
 #  mit_krb5::realm { 'TEST.COM':
@@ -115,6 +119,7 @@ define mit_krb5::realm(
   $kpasswd_server      = '',
   $v4_realm_convert    = '',
   $pkinit_anchors      = '',
+  $pkinit_pool         = '',
 ) {
 
   include ::mit_krb5
