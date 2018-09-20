@@ -1,3 +1,10 @@
+#### 2018-09-20 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.1.0
+
+##### New features
+* Add support for `dns_canonicalize_hostname` in `libdefaults` section (See [#19](https://github.com/ccin2p3/puppet-mit_krb5/pull/19))
+* Add support for `pkinit_pool` in `mit_krb5::realm` defined type (See [#18](https://github.com/ccin2p3/puppet-mit_krb5/pull/18))
+* Add native _hiera_ integration with automatic creations of `mit_krb5::domain_realm`, `mit_krb5::capaths̀`, `mit_krb5::appdefaults̀`, `mit_krb5::realm` and `mit_krb5::dbmodules` resource types using _hiera_ (See [#20](https://github.com/ccin2p3/puppet-mit_krb5/issues/20))
+
 #### 2018-09-05 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.0.0
 
 ##### New features
