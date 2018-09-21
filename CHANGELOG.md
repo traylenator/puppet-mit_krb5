@@ -1,3 +1,8 @@
+#### 2018-09-21 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.1.1
+
+##### Fixes
+* Make `appdefaults` accept boolean values (See [#21](https://github.com/ccin2p3/puppet-mit_krb5/issues/21))
+
 #### 2018-09-20 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.1.0
 
 ##### New features

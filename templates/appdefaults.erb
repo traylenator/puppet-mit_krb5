@@ -8,12 +8,11 @@
     'ignore_afs',
 ]
 #
-array_fields = ['kdc', 'admin_server']
 output = []
 scope_hash = scope.to_hash
 fields.each do |k|
   if scope_hash.include?(k)
-    value = scope_hash[k]
+    value = scope_hash[k].to_s()
     output.push("#{k} = #{value}") unless value.empty?
   end
 end
