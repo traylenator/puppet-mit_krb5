@@ -1,3 +1,8 @@
+#### 2019-06-11 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.2.0
+
+##### New features
+* Add support for rotating KDCs using `fqdn_rotate` function (See [#22](https://github.com/ccin2p3/puppet-mit_krb5/pull/22))
+
 #### 2018-09-21 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.1.1
 
 ##### Fixes
