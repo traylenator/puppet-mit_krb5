@@ -240,6 +240,8 @@ Realm name is specified by resource title
 - `auth_to_local`
 - `pkinit_anchors`
 - `pkinit_pool`
+- `rotate_servers` - Whether to apply a random rotation to the list of KDCs and
+  admin servers so that the server usage is more evenly distributed.  (Default: `false`)
 
 ## mit\_krb5::logging
 

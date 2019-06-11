@@ -23,6 +23,7 @@ fields.each do |k|
         if array_fields.include? k and value.respond_to?('each')
       # Allow multiple servers via array
         value.flatten! if value.respond_to?('flatten')
+        value = scope.call_function('fqdn_rotate', [value]) if scope_hash['rotate_servers']
         value.each do |v|
             output.push("#{k} = #{v}")
         end
