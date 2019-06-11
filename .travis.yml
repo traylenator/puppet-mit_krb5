@@ -40,6 +40,7 @@ matrix:
 branches:
   only:
     - master
+    - /^feature\//
     - /^v\d/
 notifications:
   email: false
