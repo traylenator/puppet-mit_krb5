@@ -13,7 +13,8 @@
     'pkinit_anchors',
     'pkinit_pool',
 ]
-array_fields = ['kdc', 'admin_server', 'auth_to_local']
+server_fields = ['kdc', 'admin_server']
+array_fields = server_fields + ['auth_to_local']
 output = []
 scope_hash = scope.to_hash
 fields.each do |k|
@@ -23,7 +24,9 @@ fields.each do |k|
         if array_fields.include? k and value.respond_to?('each')
       # Allow multiple servers via array
         value.flatten! if value.respond_to?('flatten')
-        value = scope.call_function('fqdn_rotate', [value]) if scope_hash['rotate_servers']
+        if server_fields.include? k and scope_hash['rotate_servers']
+          value = scope.call_function('fqdn_rotate', [value])
+        end
         value.each do |v|
             output.push("#{k} = #{v}")
         end
