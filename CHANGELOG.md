@@ -1,3 +1,8 @@
+#### 2019-06-12 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.2.1
+
+##### Fixes
+* Add support for Array values in realm `auth_to_local` param (See [#24](https://github.com/ccin2p3/puppet-mit_krb5/issues/24))
+
 #### 2019-06-11 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.2.0
 
 ##### New features
