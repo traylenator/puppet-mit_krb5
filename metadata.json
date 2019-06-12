@@ -1,6 +1,6 @@
 {
   "name": "ccin2p3-mit_krb5",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Patrick Mooney <patrick.f.mooney@gmail.com>",
   "summary": "Install and configure MIT Kerberos v5 client libraries",
   "license": "Apache-2.0",
