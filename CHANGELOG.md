@@ -1,3 +1,9 @@
+#### 2021-09-22 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.3.1
+
+##### Dependencies
+
+* Relax puppet version requirements (Fixes [#27](https://github.com/ccin2p3/puppet-mit_krb5/issues/27))
+
 #### 2021-09-22 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.3.0
 
 ##### New features
