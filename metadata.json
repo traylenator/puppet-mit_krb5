@@ -1,6 +1,6 @@
 {
   "name": "ccin2p3-mit_krb5",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "author": "Patrick Mooney <patrick.f.mooney@gmail.com>",
   "summary": "Install and configure MIT Kerberos v5 client libraries",
   "license": "Apache-2.0",
@@ -10,15 +10,15 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">=4.13.0 <5.0.0"
+      "version_requirement": ">=4.13.0 <9.0.0"
     },
     {
       "name": "puppetlabs/concat",
-      "version_requirement": ">=1.1.0 <6.0.0"
+      "version_requirement": ">=1.1.0 <8.0.0"
     },
     {
       "name": "ccin2p3/etc_services",
-      "version_requirement": ">=1.1.1 <2.0.0"
+      "version_requirement": ">=2.0.0 <3.0.0"
     }
   ],
   "operatingsystem_support": [
@@ -61,6 +61,7 @@
     }
   ],
   "description": "Install and configure MIT Kerberos v5 (initial version from Patrick Mooney)",
+  "pdk-version": "2.2.0",
   "tags": [
     "kerberos",
     "krb5",
@@ -68,7 +69,6 @@
     "mit",
     "authentication"
   ],
-  "pdk-version": "1.10.0",
-  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git#1.10.0",
-  "template-ref": "1.10.0-0-gbba9ac3"
+  "template-ref": "tags/2.2.0-0-g2381db6",
+  "template-url": "pdk-default#2.2.0"
 }

@@ -1,3 +1,16 @@
+#### 2021-09-22 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.3.0
+
+##### New features
+
+* Add support for `pkinit_anchors` and `spake_preauth_groups` (See [#25](https://github.com/ccin2p3/puppet-mit_krb5/pull/25))
+* Add support for `http_anchors` (See [#23](https://github.com/ccin2p3/puppet-mit_krb5/pull/23))
+
+##### Dependencies
+
+* Now requires [ccin2p3-etc_services](https://forge.puppet.com/modules/ccin2p3/etc_services) module in version 2.x
+* This module has been tested with puppetlabs-concat version `7.1.1`
+* This module has been tested with puppetlabs-stdlib version `8.0.0`
+
 #### 2019-06-12 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.2.1
 
 ##### Fixes
