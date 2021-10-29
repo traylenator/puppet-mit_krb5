@@ -1,3 +1,9 @@
+#### 2021-10-29 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.4.0
+
+##### New features
+
+* Add support for `plugins` (See [#28](https://github.com/ccin2p3/puppet-mit_krb5/pull/28))
+
 #### 2021-09-22 - Remi Ferrand <puppet@cc.in2p3.fr> - 1.3.1
 
 ##### Dependencies
