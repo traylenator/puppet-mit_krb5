@@ -334,6 +334,46 @@ Per realm:
 - ldap\_servers (arrays allowed)
 - ldap\_service\_password\_file
 
+## mit\_krb5::plugins
+
+Resource to add entries to `[plugins]` section.
+
+### Parameters from plugins section
+
+Allowed subsections:
+- ccselect
+- pwqual
+- kadm5\_hook
+- clpreauth
+- kdcpreauth
+- hostrealm
+- localauth
+
+Allowed parameters per subsection:
+
+- disable
+- enable_only
+- module
+
+### Example
+
+The following `plugins` section (used to disable `k5identity`)
+
+```
+[plugins]
+    ccselect = {
+        disable = k5identity
+    }
+```
+
+could be obtained with
+
+```puppet
+::mit_krb5::plugins { 'ccselect':
+    disable => 'k5identity',
+}
+```
+
 # Limitations
 
 Configuration sections other than those listed above are not yet supported.
@@ -342,7 +382,6 @@ This includes:
 - `capaths`
 - `dbdefaults`
 - `login`
-- `plugins`
 
 Stub classes for those sections exist but will throw an error.
 

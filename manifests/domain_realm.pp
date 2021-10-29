@@ -48,5 +48,10 @@ define mit_krb5::domain_realm(
       order   => "21realm_${realm}_${title}",
       content => template('mit_krb5/domain_realm.erb'),
     }
+    ensure_resource('concat::fragment', 'mit_krb5::domain_realm_trailer', {
+      target  => $mit_krb5::krb5_conf_path,
+      order   => '22domain_realm_trailer',
+      content => "\n",
+    })
   }
 }
