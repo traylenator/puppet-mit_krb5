@@ -13,6 +13,7 @@
     - [mit\_krb5::domain\_realm](#mit_krb5domain_realm)
     - [mit\_krb5::appdefaults](#mit_krb5appdefaults)
     - [mit\_krb5::dbmodules](#mit_krb5dbmodules)
+    - [mit\_krb5::plugins](#mit_krb5plugins)
 5. [Limitations](#limitations)
 6. [License](#license)
 7. [Development](#development)
@@ -203,7 +204,7 @@ parameters are used to define top-level directives and  contents of
 - `krb5_conf_path` - Path to krb5.conf (default: /etc/krb5.conf)
 - `krb5_conf_owner` - Owner of krb5.conf (default: root)
 - `krb5_conf_group` - Group of krb5.conf (default: root)
-- `krb5_conf_mode` - Mode of krb5.conf (default: 0444) 
+- `krb5_conf_mode` - Mode of krb5.conf (default: 0444)
 
 ## System parameters
 
@@ -217,7 +218,7 @@ parameter, do so before declaring/including mit\_krb5 or use hiera.
 
 ### Parameters
 
-- `packages` - Override facter-derived defaults for Kerberos packages (default: undef) 
+- `packages` - Override facter-derived defaults for Kerberos packages (default: undef)
 
 ## mit\_krb5::realm
 
@@ -245,7 +246,7 @@ Realm name is specified by resource title
 
 ## mit\_krb5::logging
 
-Class to configure `[logging]` section 
+Class to configure `[logging]` section
 
 ### Parameters from logging section
 
@@ -276,7 +277,7 @@ application = {
 }
 ```
 
-or 
+or
 
 ```
 realm = {
